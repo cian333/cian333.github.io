@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Envelope Message with Heart</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FF69B4; /* Light gray background */
+            font-family: Arial, sans-serif;
+        }
+
+        .envelope {
+            width: 200px;
+            height: 130px;
+            background-color: #ffefef;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        .envelope:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ffefef;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            top: 0;
+            left: 0;
+            transform-origin: bottom;
+            transition: transform 0.5s;
+            z-index: 1;
+        }
+
+        .envelope.open:before {
+            transform: rotateX(-180deg);
+        }
+
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.5);
+            color: #ff4d4d; /* Red color for heart */
+            font-size: 40px; /* Size of the heart */
+            z-index: 2;
+        }
+
+        /* Hide the heart when the envelope is open */
+        .envelope.open .heart {
+            display: none;
+        }
+
+        .message {
+            display: none;
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            left: 10px;
+            right: 10px;
+            background-color: #ffefef; /* Light pink background for the message */
+            border: 1px solid #ffcccc;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 3;
+        }
+
+        /* Show the message when the envelope is open */
+        .envelope.open .message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" onclick="openEnvelope(this)">
+        <div class="heart">❤️</div> <!-- Heart emoji -->
+        <div class="message">I hope that you know that, i love you so much, can't wait to see you cara, dina po kita iiwan oki?mwa </div> <!-- Message inside the envelope -->
+    </div>
+
+    <script>
+        function openEnvelope(el) {
+            el.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
